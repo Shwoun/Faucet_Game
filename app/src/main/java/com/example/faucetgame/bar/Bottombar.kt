@@ -7,16 +7,16 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.faucetgame.R
 import com.example.faucetgame.componanet.LocalDimensions
 import com.example.faucetgame.ui.theme.black
@@ -29,24 +29,42 @@ fun Bottombar() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(black)
+            .background(black),
+        verticalArrangement = Arrangement.Bottom
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(respons.dp(70)),
+                .height(respons.dp(50)),
             colors = CardDefaults.cardColors(containerColor = comla)
         ) {
             Row(
                 modifier = Modifier.fillMaxSize(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = {}){
-                    Icon(painter = painterResource(R.drawable.home),contentDescription = null)
-                }
+                Iconlogo(R.drawable.home)
+                Iconlogo(R.drawable.bouns)
+                Iconlogo(R.drawable.history)
+                Iconlogo(R.drawable.user)
             }
         }
 
     }
 
+}
+
+@Composable
+fun Iconlogo(
+    icon: Int
+) {
+    val respons = LocalDimensions.current
+    IconButton(onClick = {}, modifier = Modifier.size(respons.dp(45))) {
+        Icon(
+            painter = painterResource(icon),
+            contentDescription = null,
+            modifier = Modifier.size(respons.dp(35))
+        )
+
+    }
 }
